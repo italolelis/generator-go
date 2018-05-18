@@ -1,5 +1,18 @@
 language: node_js
+
 node_js:
   - 7
   - 6
   - 4
+
+services:
+  - docker
+
+script:
+  - docker build -t italolelis/generator-go .
+
+after_success:
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+      docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ;
+      docker push italolelis/generator-go;
+    fi
