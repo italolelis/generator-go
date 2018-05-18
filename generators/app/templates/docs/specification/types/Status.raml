@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+properties:
+    status: string
+    timestamp: string
+    system: 
+        type: object
+        properties:
+            version: string
+            goroutines_count: integer
+            total_alloc_bytes: integer
+            heap_objects_count: integer
+            alloc_bytes: integer

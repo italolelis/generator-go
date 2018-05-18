@@ -1,0 +1,59 @@
+#%RAML 1.0
+title: <%=projectName%>
+version: v1.0.0
+mediaType: application/json
+protocols: [HTTP]
+description: Expose a simple rest API for <%=projectName%>.
+types:
+  Content: !include types/Status.raml
+/:
+  get:
+    description: Simple hello world example
+    responses:
+      200:
+        description: OK
+
+/github/repos:
+  get:
+    description: An example of how to use the cirucit breaker and retry HTTP client
+    responses:
+      200:
+        description: OK
+
+/docs:
+  get:
+    description: This are your API docs
+    responses:
+      200:
+        description: OK
+
+/hystrix:
+  get:
+    description: Get a stream of circuits
+    responses:
+      200:
+        description: OK
+
+/metrics:
+  get:
+    description: Get a stream of prometheus metrics
+    responses:
+      200:
+        description: OK
+
+/status:
+  get:
+    description: Get application health
+    responses:
+      200:
+        body:
+          application/json:
+            type: Status
+      400:
+        body:
+          application/json:
+            type: Status
+      500:
+        body:
+          application/json:
+            type: Status
